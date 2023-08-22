@@ -44,37 +44,26 @@ def validarClave(contraseña):
         return False
 
 def crearCuenta():
-    print("")
-    print("")
-    print("Excelente. Ha introducido la opcion 1. (Crear cuenta)")
+    print("\nExcelente. Ha introducido la opcion 1. (Crear cuenta)\n")
     registro = cuenta()
     nombre = input("Introduce el nombre: ")
     while not nombre.isalpha():
-        print("")
-        print("El nombre no debe tener caracteres especiales ni numeros.")
+        print("\nEl nombre no debe tener caracteres especiales ni numeros.")
         nombre = input("Nombre: ")
-    print("")
-    print("Nombre validado.")
-    apellido = input("Introduce el apellido: ")
+    print("\nNombre validado.")
+    apellido = input("\nIntroduce el apellido: ")
     while not apellido.isalpha():
-        print("")
-        print("El apellido no debe tener caracteres especiales ni numeros.")
+        print("\nEl apellido no debe tener caracteres especiales ni numeros.")
         apellido = input("Apellido: ")
-    print("")
-    print("Apellido validado.")
-    cedula = input("Cedula: ")
+    print("\nApellido validado.")
+    cedula = input("\nCedula: ")
     while not cedula.isdigit():
-        print("")
-        print("La cedula no debe tener caracteres especiales ni letras.")
+        print("\nLa cedula no debe tener caracteres especiales ni letras.")
         cedula = input("Cedula: ")
-    print("")
-    print("Cedula validada.")
-    print("")
+    print("\nCedula validada.\n")
     usuario = input("Introduce tu nombre de usuario: ")
-    print("")
-    print("Usuario validado.")
-    print("")
-    print("Requisitos para la creacion de la clave.")
+    print("\nUsuario validado.")
+    print("\nRequisitos para la creacion de la clave.")
     print("* Que tenga como minimo 6 caracteres.")
     print("* Que tenga al menos una letra en mayuscula y en minusculas.")
     print("* Que tenga al menos un caracter especial y un numero")
@@ -82,17 +71,14 @@ def crearCuenta():
     clave = input("Introduce la clave: ")
     validacion_clave = validarClave(clave)
     while not validacion_clave:
-        print("")
-        print("Introduce una clave que cumpla con los requisitos.")
+        print("\nIntroduce una clave que cumpla con los requisitos.")
         print("* Que tenga como minimo 6 caracteres.")
         print("* Que tenga al menos una letra en mayuscula y en minusculas.")
         print("* Que tenga al menos un caracter especial y un numero")
-        print("Ejemplo: Pablo123@")
-        print("")
+        print("Ejemplo: Pablo123@\n")
         clave = input("Introduce una clave valida: ")
         validacion_clave = validarClave(clave)
-    print("")
-    print("Clave validada.")
+    print("\nClave validada.")
     registro["nombre"] = nombre
     registro["apellido"] = apellido
     registro["cedula"] = cedula
@@ -107,117 +93,90 @@ def crearCuenta():
             print("La persona con el usuario y/o cedula anteriormente introducida ya existe.")
     if existe == False:
         database.append(registro)
-        print("")
-        print("Usuario registrado correctamente. Retornando al menu principal")
+        print("\nUsuario registrado correctamente. Retornando al menu principal")
 
 
 
 def depositoBancario():
-    print("")
-    print("Ha seleccionado la opcion 2. (Realizar un deposito bancario)")
-    print("")
+    print("\nHa seleccionado la opcion 2. (Realizar un deposito bancario)\n")
     existe_usuario = False
     existe_clave = False
     usuario = input("Introduzca un nombre de usuario existente: ")
     for fila in database:
         if fila["usuario"] == usuario:
             existe_usuario = True
-            print("")
-            print("Usuario encontrado")
-            print("")
+            print("\nUsuario encontrado\n")
             clave = input("Introduzca la clave respectiva: ")
             if fila["clave"] == clave:
                 existe_clave = True
-                print("")
-                print("Usuario y clave correcta.")
-                print("")
+                print("\nUsuario y clave correcta.\n")
                 print("Bienvenido! ",fila["nombre"]," ",fila["apellido"])
-                print("")
-                monto = float(input("Introduzca el monto a depositar en su cuenta: "))
+                monto = float(input("\nIntroduzca el monto a depositar en su cuenta: \n"))
                 if monto > 0:
                     fila["posicion consolidada"] += monto
                     print("Monto introducido: ",monto)
                     print("Monto total: ",fila["posicion consolidada"])
                 else:
-                    print("")
-                    print("Error al introducir un monto. Intentalo de nuevo...")
-                    print("")     
+                    print("\nError al introducir un monto. Intentalo de nuevo...\n")     
     if existe_usuario == False:
-        print("")
-        print("El usuario introducido no se encuentra registrado en el sistema.")
+        print("\nEl usuario introducido no se encuentra registrado en el sistema.\n")
     else:
         if existe_clave == False:
-            print("La clave introducida es incorrecta...")
+            print("\nLa clave introducida es incorrecta...\n")
     
 
 def retiroBancario():
-    print("")
-    print("Ha seleccionado la opcion 3. (Realizar un retiro bancario)")
-    print("")
+    print("\nHa seleccionado la opcion 3. (Realizar un retiro bancario)\n")
     existe_usuario = False
     existe_clave = False
     usuario = input("Introduzca un nombre de usuario existente: ")
     for fila in database:
         if fila["usuario"] == usuario:
             existe_usuario = True
-            print("")
-            print("Usuario encontrado")
-            print("")
+            print("\nUsuario encontrado\n")
             clave = input("Introduzca la clave respectiva: ")
             if fila["clave"] == clave:
                 existe_clave = True
-                print("")
-                print("Usuario y clave correcta.")
-                print("")
+                print("\nUsuario y clave correcta.\n")
                 print("Bienvenido! ",fila["nombre"]," ",fila["apellido"])
-                print("")
-                monto = float(input("Introduzca el monto a retirar de su cuenta: "))
+                monto = float(input("\nIntroduzca el monto a retirar de su cuenta: "))
                 if monto > fila["posicion consolidada"] or monto <= 0:
-                    print("Introduzca un monto menor o igual al saldo disponible de su cuenta. Intente de nuevo")
-                    print("")
+                    print("\nIntroduzca un monto menor o igual al saldo disponible de su cuenta. Intente de nuevo\n")
                 elif monto > 0 and monto <= fila["posicion consolidada"]:
                     fila["posicion consolidada"] -= monto
                     print("Monto introducido: ",monto)
                     print("Monto total: ",fila["posicion consolidada"])
     if existe_usuario == False:
-        print("")
-        print("El usuario introducido no se encuentra registrado en el sistema.")
+        print("\nEl usuario introducido no se encuentra registrado en el sistema.\n")
     else:
         if existe_clave == False:
-            print("La clave introducida es incorrecta...")
+            print("\nLa clave introducida es incorrecta...\n")
 
 
 
 def consultarCuenta():
-    print("")
-    print("Ha seleccionado la opcion 4. (Consultar datos de una cuenta)")
-    print("")
+    print("\nHa seleccionado la opcion 4. (Consultar datos de una cuenta)\n")
     existe_usuario = False
     existe_clave = False
     usuario = input("Introduzca un nombre de usuario existente: ")
     for fila in database:
         if fila["usuario"] == usuario:
             existe_usuario = True
-            print("")
-            print("Usuario encontrado")
-            print("")
+            print("\nUsuario encontrado\n")
             clave = input("Introduzca la clave respectiva: ")
             if fila["clave"] == clave:
                 existe_clave = True
-                print("")
-                print("Usuario y clave correcta. Mostrando los datos de la cuenta...")
+                print("\nUsuario y clave correcta. Mostrando los datos de la cuenta...\n")
                 print("Nombre: ",fila["nombre"])
                 print("Apellido: ",fila["apellido"])
                 print("Cedula: ",fila["cedula"])
                 print("Usuario: ",fila["usuario"])
-                print("Posicion Consolidada: ",fila["posicion consolidada"])
-                print("")
+                print("Posicion Consolidada: ",fila["posicion consolidada"],"\n")
     if existe_usuario == False:
-        print("")
-        print("El usuario introducido no se encuentra registrado en el sistema.")
+        print("\nEl usuario introducido no se encuentra registrado en el sistema.\n")
     else:
         if existe_clave == False:
-            print("La clave introducida es incorrecta...")
+            print("\nLa clave introducida es incorrecta...\n")
 
 
 def transferirACedula(persona,cedula,database):
@@ -225,77 +184,60 @@ def transferirACedula(persona,cedula,database):
     for fila in database:
         if fila["cedula"] == cedula:
             existe_cedula = True
-            print("")
-            print("Cedula encontrada.")
-            print("")
+            print("\nCedula encontrada.\n")
             print("Nombre: ",fila["nombre"])
             print("Apellido: ",fila["apellido"])
-            print("")
-            monto = float(input("Introduzca el monto a transferir: "))
+            monto = float(input("\nIntroduzca el monto a transferir: "))
             if monto > 0 and monto <= persona["posicion consolidada"]:
                 persona["posicion consolidada"] -= monto
                 fila["posicion consolidada"] += monto
-                print("")
-                print("Monto transferido: ",monto)
+                print("\nMonto transferido: ",monto)
                 print("Saldo disponible en su cuenta: ",persona["posicion consolidada"])
             else:
-                print("Introduzca un monto correcto y/o que no supere su saldo disponible en la cuenta.")
+                print("\nIntroduzca un monto correcto y/o que no supere su saldo disponible en la cuenta.\n")
     if existe_cedula == False:
-        print("")
-        print("La persona a la cual desea realizarle una transferencia no se encuentra en el sistema.")
+        print("\nLa persona a la cual desea realizarle una transferencia no se encuentra en el sistema.\n")
 
 
 def realizarTransferencia():
-    print("")
-    print("Ha seleccionado la opcion 5. (Realizar una transferencia bancaria)")
-    print("")
+    print("\nHa seleccionado la opcion 5. (Realizar una transferencia bancaria)\n")
     existe_usuario = False
     existe_clave = False
     usuario = input("Introduzca un nombre de usuario existente: ")
     for fila in database:
         if fila["usuario"] == usuario:
             existe_usuario = True
-            print("")
-            print("Usuario encontrado")
-            print("")
+            print("\nUsuario encontrado\n")
             clave = input("Introduzca la clave respectiva: ")
             if fila["clave"] == clave:
                 existe_clave = True
-                print("")
-                print("Bienvenido! ",fila["nombre"]," ",fila["apellido"])
-                print("")
-                cedula = input("Introduzca la cedula de la persona a la que desea realizar la transferencia: ")
+                print("\nBienvenido! ",fila["nombre"]," ",fila["apellido"])
+                cedula = input("\nIntroduzca la cedula de la persona a la que desea realizar la transferencia: \n")
                 while not cedula.isdigit():
-                    print("")
-                    print("La cedula no debe tener caracteres especiales ni letras.")
+                    print("La cedula no debe tener caracteres especiales ni letras.\n")
                     cedula = input("Cedula: ")
-                print("")
-                print("Cedula procesada...")
+                print("\nCedula procesada...")
                 transferirACedula(fila,cedula,database)
     if existe_usuario == False:
-        print("")
-        print("El usuario introducido no se encuentra registrado en el sistema.")
+        print("\nEl usuario introducido no se encuentra registrado en el sistema.")
     else:
         if existe_clave == False:
-            print("La clave introducida es incorrecta...")
+            print("\nLa clave introducida es incorrecta...")
 
 
 def main():
     continuidad = True
-    print("Hola, bienvenido/a al banco nacional, a continuacion le presentare las opciones que tenemos disponibles:")
-    print("")
+    print("Hola, bienvenido/a al banco nacional, a continuacion le presentare las opciones que tenemos disponibles:\n")
     while continuidad:
         try:
-            print("")
-            print("")
-            print("Introduzca su opcion marcando cualquiera de los numeros indicados.")
+            print("\n\nIntroduzca su opcion marcando cualquiera de los numeros indicados.")
             print("1.- Crear una Cuenta.")
             print("2.- Realizar un Deposito Bancario.")
             print("3.- Realizar un Retiro")
             print("4.- Consultar los datos de una cuenta.")
             print("5.- Realizar una transferencia a otro usuario.")
             print("6.- Salir del programa.")
-            opcion = int(input("Opcion: "))
+            opcion = int(input("Opcion > "))
             if opcion == 1:
                 crearCuenta()
             elif opcion == 2:
@@ -310,12 +252,10 @@ def main():
                 realizarTransferencia()
                 continue
             elif opcion == 6:
-                print("")
-                print("Hasta luego!")
+                print("\nHasta luego!")
                 continuidad = False
             else:
                 raise Exception("Dato introducido invalido. Intente de nuevo.")
         except Exception as error:
-            print("")
-            print("ERROR: ",error)
+            print("\nERROR: ",error)
 main()
