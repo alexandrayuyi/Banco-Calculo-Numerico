@@ -1,8 +1,5 @@
 # Modelo de Sistema Bancario
 
-El programa consiste en emular todas las opciones que se pueden hacer a través de una plataforma web de un banco.
-
-
 >Desarrolado por:
 >* Annuar A | [@Annuar2203](https://github.com/Annuar2203)
 >* Jean Odrizola | [@erjeank25](https://github.com/erjeank25)
@@ -10,6 +7,8 @@ El programa consiste en emular todas las opciones que se pueden hacer a través 
 >* Moises Londoño | [@MoisesLondo](https://github.com/MoisesLondo)
 >* Luis Amias | [@AstroLui](https://github.com/AstroLui)
 
+
+El programa consiste en emular todas las opciones que se pueden hacer a través de una plataforma web de un banco.
 
 
 ## Explicación de los modulos
