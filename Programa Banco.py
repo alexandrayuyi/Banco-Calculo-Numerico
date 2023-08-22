@@ -9,8 +9,6 @@ from string import punctuation
 
 database = []
 
-
-
 def cuenta():
     account = {
         "nombre": None,
@@ -96,8 +94,6 @@ def crearCuenta():
         database.append(registro)
         print("\nUsuario registrado correctamente. Retornando al menu principal")
 
-
-
 def depositoBancario():
     print("\nHa seleccionado la opcion 2. (Realizar un deposito bancario)\n")
     existe_usuario = False
@@ -124,7 +120,6 @@ def depositoBancario():
     else:
         if existe_clave == False:
             print("\nLa clave introducida es incorrecta...\n")
-
 
 def retiroBancario():
     print("\nHa seleccionado la opcion 3. (Realizar un retiro bancario)\n")
@@ -153,8 +148,6 @@ def retiroBancario():
         if existe_clave == False:
             print("\nLa clave introducida es incorrecta...\n")
 
-
-
 def consultarCuenta():
     print("\nHa seleccionado la opcion 4. (Consultar datos de una cuenta)\n")
     existe_usuario = False
@@ -179,7 +172,6 @@ def consultarCuenta():
         if existe_clave == False:
             print("\nLa clave introducida es incorrecta...\n")
 
-
 def transferirACedula(persona,cedula,database):
     existe_cedula = False
     for fila in database:
@@ -198,7 +190,6 @@ def transferirACedula(persona,cedula,database):
                 print("\nIntroduzca un monto correcto y/o que no supere su saldo disponible en la cuenta.\n")
     if existe_cedula == False:
         print("\nLa persona a la cual desea realizarle una transferencia no se encuentra en el sistema.\n")
-
 
 def realizarTransferencia():
     print("\nHa seleccionado la opcion 5. (Realizar una transferencia bancaria)\n")
@@ -224,7 +215,6 @@ def realizarTransferencia():
     else:
         if existe_clave == False:
             print("\nLa clave introducida es incorrecta...")
-
 
 def main():
     continuidad = True
