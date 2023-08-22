@@ -3,7 +3,8 @@
     Jean Odriozola
     Maria Chang
     Moises Londoño
-    Luis Amias"""
+    Luis Daniel Amias"""
+
 from string import punctuation
 
 database = []
@@ -117,13 +118,13 @@ def depositoBancario():
                     print("Monto introducido: ",monto)
                     print("Monto total: ",fila["posicion consolidada"])
                 else:
-                    print("\nError al introducir un monto. Intentalo de nuevo...\n")     
+                    print("\nError al introducir un monto. Intentalo de nuevo...\n")
     if existe_usuario == False:
         print("\nEl usuario introducido no se encuentra registrado en el sistema.\n")
     else:
         if existe_clave == False:
             print("\nLa clave introducida es incorrecta...\n")
-    
+
 
 def retiroBancario():
     print("\nHa seleccionado la opcion 3. (Realizar un retiro bancario)\n")
