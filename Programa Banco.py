@@ -1,9 +1,9 @@
 """Programa realizado por:
-    Annuar Abouharb
-    Jean Odriozola
-    Maria Chang
-    Moises Londoño
-    Luis Daniel Amias"""
+    Annuar Abouharb 30.350.953
+    Jean Odriozola 29.569.900
+    Maria Chang 28.083.608
+    Moises Londoño 29.750.712
+    Luis Daniel Amias 30.292.216"""
 
 from string import punctuation
 
